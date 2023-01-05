@@ -2,7 +2,7 @@ import React from 'react';
 import BasketItem from "./BasketItem";
 
 const BasketList = (props) => {
-    const {order = [], handleBasketShow = Function.prototype} = props
+    const {order = [], handleBasketShow = Function.prototype, removeFromBasket = Function.prototype} = props
 
     const totalPrice = order.reduce((sum, el) => {
         return sum + el.price * el.quantity;
@@ -13,10 +13,12 @@ const BasketList = (props) => {
             <li className="collection-item active">Basket</li>
             {
                 order.length ? order.map(item => (
-                    <BasketItem key={item.id}{...item}/>
+                    <BasketItem key={item.id}
+                                removeFromBasket={removeFromBasket}
+                                {...item}/>
                 )) : <li className="collection-item">Basket is empty</li>
             }
-            <li className="collection-item active">Total price: {totalPrice} ₿ </li>
+            <li className="collection-item active">Total price: {totalPrice} ₿</li>
             <i className='material-icons basket-close' onClick={handleBasketShow}>close</i>
         </ul>
     );
