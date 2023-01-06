@@ -10,8 +10,9 @@ const BasketItem = (props) => {
         decQuantity= Function.prototype,
         incQuantity= Function.prototype
     } = props
+
     return (
-        <li className="collection-item ">{name}
+        <li className="collection-item">{name}
             <i className="material-icons basket-quantity" onClick={()=>decQuantity(id)}>remove</i>
             ({quantity} items)
             <i className="material-icons basket-quantity" onClick={()=>incQuantity(id)}>add</i>
