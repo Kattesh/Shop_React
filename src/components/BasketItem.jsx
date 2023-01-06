@@ -1,9 +1,21 @@
 import React from 'react';
 
 const BasketItem = (props) => {
-    const {id, name, price, quantity, removeFromBasket = Function.prototype} = props
+    const {
+        id,
+        name,
+        price,
+        quantity,
+        removeFromBasket = Function.prototype,
+        decQuantity= Function.prototype,
+        incQuantity= Function.prototype
+    } = props
     return (
-        <li className="collection-item ">{name} = {price * quantity} ₿ ({quantity} items)
+        <li className="collection-item ">{name}
+            <i className="material-icons basket-quantity" onClick={()=>decQuantity(id)}>remove</i>
+            ({quantity} items)
+            <i className="material-icons basket-quantity" onClick={()=>incQuantity(id)}>add</i>
+            = {price * quantity} ₿
             <span className="secondary-content" onClick={() => removeFromBasket(id)}>
                     <i className="material-icons basket-delete">close</i>
                 </span>
